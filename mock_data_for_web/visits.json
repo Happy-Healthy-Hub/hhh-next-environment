@@ -1,0 +1,14 @@
+[
+  { "id": "visit-001", "careAssignmentId": "asg-001", "scheduledStart": "2026-07-10T09:00:00+05:30", "scheduledEnd": "2026-07-10T10:00:00+05:30", "status": "completed", "checkInAt": "2026-07-10T09:02:00+05:30", "checkOutAt": "2026-07-10T09:58:00+05:30" },
+  { "id": "visit-002", "careAssignmentId": "asg-002", "scheduledStart": "2026-07-25T11:00:00+05:30", "scheduledEnd": "2026-07-25T12:00:00+05:30", "status": "completed", "checkInAt": "2026-07-25T11:05:00+05:30", "checkOutAt": "2026-07-25T12:00:00+05:30" },
+  { "id": "visit-003", "careAssignmentId": "asg-003", "scheduledStart": "2026-08-08T09:30:00+05:30", "scheduledEnd": "2026-08-08T10:30:00+05:30", "status": "completed", "checkInAt": "2026-08-08T09:28:00+05:30", "checkOutAt": "2026-08-08T10:35:00+05:30" },
+  { "id": "visit-004", "careAssignmentId": "asg-004", "scheduledStart": "2026-09-10T08:00:00+05:30", "scheduledEnd": "2026-09-11T08:00:00+05:30", "status": "completed", "checkInAt": "2026-09-10T08:00:00+05:30", "checkOutAt": "2026-09-11T08:05:00+05:30" },
+  { "id": "visit-005", "careAssignmentId": "asg-005", "scheduledStart": "2026-09-25T14:00:00+05:30", "scheduledEnd": "2026-09-25T15:00:00+05:30", "status": "missed", "checkInAt": null, "checkOutAt": null },
+  { "id": "visit-006", "careAssignmentId": "asg-006", "scheduledStart": "2026-10-08T11:00:00+05:30", "scheduledEnd": "2026-10-08T12:00:00+05:30", "status": "completed", "checkInAt": "2026-10-08T11:00:00+05:30", "checkOutAt": "2026-10-08T12:02:00+05:30" },
+  { "id": "visit-007", "careAssignmentId": "asg-007", "scheduledStart": "2026-10-15T10:00:00+05:30", "scheduledEnd": "2026-10-15T11:00:00+05:30", "status": "completed", "checkInAt": "2026-10-15T10:03:00+05:30", "checkOutAt": "2026-10-15T11:00:00+05:30" },
+  { "id": "visit-008", "careAssignmentId": "asg-009", "scheduledStart": "2026-09-30T09:00:00+05:30", "scheduledEnd": "2026-09-30T10:00:00+05:30", "status": "cancelled", "checkInAt": null, "checkOutAt": null },
+  { "id": "visit-009", "careAssignmentId": "asg-010", "scheduledStart": "2026-10-20T08:00:00+05:30", "scheduledEnd": "2026-10-21T08:00:00+05:30", "status": "completed", "checkInAt": "2026-10-20T08:00:00+05:30", "checkOutAt": "2026-10-21T08:10:00+05:30" },
+  { "id": "visit-010", "careAssignmentId": "asg-010", "scheduledStart": "2026-11-03T08:00:00+05:30", "scheduledEnd": "2026-11-04T08:00:00+05:30", "status": "scheduled", "checkInAt": null, "checkOutAt": null },
+  { "id": "visit-011", "careAssignmentId": "asg-007", "scheduledStart": "2026-11-01T10:00:00+05:30", "scheduledEnd": "2026-11-01T11:00:00+05:30", "status": "scheduled", "checkInAt": null, "checkOutAt": null },
+  { "id": "visit-012", "careAssignmentId": "asg-006", "scheduledStart": "2026-11-06T11:00:00+05:30", "scheduledEnd": "2026-11-06T12:00:00+05:30", "status": "scheduled", "checkInAt": null, "checkOutAt": null }
+]

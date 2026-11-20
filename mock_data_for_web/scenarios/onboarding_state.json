@@ -1,0 +1,30 @@
+{
+  "description": "A small, deliberately incomplete dataset for demonstrating onboarding-in-progress UI: one customer with missing contact details and no requests yet, and one worker who has signed up but not finished training. Used by the mock-data service when the 'onboarding' scenario is selected.",
+  "customers": [
+    {
+      "id": "cust-onboarding-001",
+      "fullName": "Priyanka Deshmukh",
+      "preferredName": null,
+      "phoneNumber": null,
+      "email": "priyanka.deshmukh@example.com",
+      "city": null,
+      "accountStatus": "incomplete",
+      "registeredAt": "2026-10-27T09:00:00+05:30"
+    }
+  ],
+  "workers": [
+    {
+      "id": "worker-onboarding-001",
+      "fullName": "Kunal Oberoi",
+      "phoneNumber": "+91 91000 00099",
+      "email": "kunal.oberoi@example.com",
+      "onboardingStatus": "pending",
+      "trainingStatus": "not_started",
+      "availability": "unavailable",
+      "joinedAt": "2026-10-27T09:00:00+05:30"
+    }
+  ],
+  "careRequests": [],
+  "careAssignments": [],
+  "visits": []
+}

@@ -1,0 +1,9 @@
+{
+  "description": "Simulates a brand-new deployment with no records yet. Used by the mock-data service when the 'empty' scenario is selected (see mock_data_for_web/README.md) to drive every list/table/chart's empty state.",
+  "customers": [],
+  "workers": [],
+  "careRequests": [],
+  "careAssignments": [],
+  "visits": [],
+  "services": []
+}

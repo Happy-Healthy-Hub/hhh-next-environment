@@ -1,0 +1,10 @@
+[
+  { "id": "worker-001", "fullName": "Anita Fernandes", "phoneNumber": "+91 91000 00001", "email": "anita.fernandes@example.com", "onboardingStatus": "active", "trainingStatus": "completed", "availability": "assigned", "joinedAt": "2026-06-10T09:00:00+05:30" },
+  { "id": "worker-002", "fullName": "Rajiv Menon", "phoneNumber": "+91 91000 00002", "email": "rajiv.menon@example.com", "onboardingStatus": "active", "trainingStatus": "completed", "availability": "available", "joinedAt": "2026-06-22T09:00:00+05:30" },
+  { "id": "worker-003", "fullName": "Suman Thapa", "phoneNumber": "+91 91000 00003", "email": "suman.thapa@example.com", "onboardingStatus": "active", "trainingStatus": "completed", "availability": "assigned", "joinedAt": "2026-07-14T09:00:00+05:30" },
+  { "id": "worker-004", "fullName": "Deepa Nair", "phoneNumber": "+91 91000 00004", "email": "deepa.nair@example.com", "onboardingStatus": "active", "trainingStatus": "in_progress", "availability": "available", "joinedAt": "2026-08-05T09:00:00+05:30" },
+  { "id": "worker-005", "fullName": "Mahesh Patil", "phoneNumber": "+91 91000 00005", "email": "mahesh.patil@example.com", "onboardingStatus": "active", "trainingStatus": "completed", "availability": "on_leave", "joinedAt": "2026-08-19T09:00:00+05:30" },
+  { "id": "worker-006", "fullName": "Ritu Chopra", "phoneNumber": "+91 91000 00006", "email": "ritu.chopra@example.com", "onboardingStatus": "pending", "trainingStatus": "not_started", "availability": "unavailable", "joinedAt": "2026-10-20T09:00:00+05:30" },
+  { "id": "worker-007", "fullName": "Josephine Lobo", "phoneNumber": "+91 91000 00007", "email": "josephine.lobo@example.com", "onboardingStatus": "active", "trainingStatus": "completed", "availability": "assigned", "joinedAt": "2026-07-29T09:00:00+05:30" },
+  { "id": "worker-008", "fullName": "Naveen Reddy", "phoneNumber": "+91 91000 00008", "email": "naveen.reddy@example.com", "onboardingStatus": "suspended", "trainingStatus": "completed", "availability": "unavailable", "joinedAt": "2026-06-30T09:00:00+05:30" }
+]

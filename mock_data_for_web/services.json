@@ -1,0 +1,62 @@
+[
+  {
+    "id": "svc-001",
+    "serviceCode": "VISIT-1H",
+    "name": "Companion visit (1 hour)",
+    "description": "A one-hour home visit for company, light help and a wellbeing check.",
+    "basePrice": 500,
+    "currencyCode": "INR",
+    "priceUnit": "per_visit",
+    "isActive": true
+  },
+  {
+    "id": "svc-002",
+    "serviceCode": "VISIT-PERSONAL-CARE",
+    "name": "Personal care visit",
+    "description": "Assistance with bathing, dressing and daily personal care.",
+    "basePrice": 800,
+    "currencyCode": "INR",
+    "priceUnit": "per_visit",
+    "isActive": true
+  },
+  {
+    "id": "svc-003",
+    "serviceCode": "NIGHT-STAY",
+    "name": "Overnight stay",
+    "description": "An overnight caregiver presence for safety and support.",
+    "basePrice": 2400,
+    "currencyCode": "INR",
+    "priceUnit": "per_day",
+    "isActive": true
+  },
+  {
+    "id": "svc-004",
+    "serviceCode": "MOBILITY-SUPPORT",
+    "name": "Mobility support",
+    "description": "Help with walking, transfers and getting to appointments.",
+    "basePrice": 350,
+    "currencyCode": "INR",
+    "priceUnit": "per_hour",
+    "isActive": true
+  },
+  {
+    "id": "svc-005",
+    "serviceCode": "MEAL-PREP",
+    "name": "Meal preparation",
+    "description": "Preparing meals in line with any dietary needs on file.",
+    "basePrice": 400,
+    "currencyCode": "INR",
+    "priceUnit": "per_visit",
+    "isActive": true
+  },
+  {
+    "id": "svc-006",
+    "serviceCode": "RESPITE-DAY",
+    "name": "Day respite care",
+    "description": "A full day of care so a family carer can rest or attend to other matters.",
+    "basePrice": 1800,
+    "currencyCode": "INR",
+    "priceUnit": "per_day",
+    "isActive": false
+  }
+]

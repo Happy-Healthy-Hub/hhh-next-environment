@@ -1,0 +1,5 @@
+{
+  "description": "Simulates a backend failure (e.g. the data source being unreachable). Used by the mock-data service when the 'error' scenario is selected to make every list/table/chart render its error state with a retry action, instead of ever silently showing stale or fabricated 'successful' data.",
+  "simulateError": true,
+  "message": "Simulated failure for UI testing: the data source did not respond."
+}

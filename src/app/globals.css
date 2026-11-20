@@ -1,0 +1,822 @@
+/* Happy Healthy Hub operational portal — design tokens.
+ * Values copied from DESIGN.md section 3 (the same tokens the Flutter app
+ * uses, via lib/app/theme/app_colors.dart). Do not add new colours here;
+ * map new needs onto these tokens instead, per DESIGN.md's instruction to
+ * reconcile with the existing system rather than create a parallel one. */
+
+:root {
+  --hhh-primary-teal: #176b63;
+  --hhh-dark-teal: #104f49;
+  --hhh-warm-ivory: #faf8f3;
+  --hhh-muted-sage: #dce9df;
+  --hhh-soft-peach: #f3d5c5;
+  --hhh-primary-text: #242b29;
+  --hhh-secondary-text: #626c67;
+  --hhh-white: #ffffff;
+  --hhh-border: #e5e8e2;
+
+  --hhh-error: #b3261e;
+  --hhh-error-surface: #f9dedc;
+  --hhh-success: #246b45;
+  --hhh-success-surface: #ddefe3;
+  --hhh-warning-text: #7a4510;
+  --hhh-warning-surface: #fbe7cf;
+  --hhh-neutral-surface: #eef0ec;
+
+  --hhh-radius-card: 12px;
+  --hhh-radius-pill: 999px;
+  --hhh-space-xs: 4px;
+  --hhh-space-sm: 8px;
+  --hhh-space-md: 16px;
+  --hhh-space-lg: 24px;
+  --hhh-space-xl: 32px;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--hhh-warm-ivory);
+  color: var(--hhh-primary-text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  line-height: 1.5;
+  /* WCAG 2.2 AA base size; DESIGN.md requires 4.5:1 contrast for normal
+   * text and legible sizing throughout, not just the mobile app. */
+  font-size: 16px;
+}
+
+a {
+  color: var(--hhh-dark-teal);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--hhh-primary-text);
+  line-height: 1.25;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Visible focus indicator everywhere (DESIGN.md section 9: keyboard
+ * navigation and visible focus are required on web, not optional). */
+:focus-visible {
+  outline: 3px solid var(--hhh-primary-teal);
+  outline-offset: 2px;
+}
+
+.hhh-card {
+  background: var(--hhh-white);
+  border: 1px solid var(--hhh-border);
+  border-radius: var(--hhh-radius-card);
+  padding: var(--hhh-space-lg);
+}
+
+.hhh-button-primary {
+  background: var(--hhh-dark-teal);
+  color: var(--hhh-white);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  min-height: 44px;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.hhh-button-primary:hover:not(:disabled) {
+  background: var(--hhh-primary-teal);
+}
+
+.hhh-button-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.hhh-button-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hhh-button-outlined {
+  background: transparent;
+  color: var(--hhh-dark-teal);
+  border: 1px solid var(--hhh-dark-teal);
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  min-height: 44px;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.hhh-button-outlined:hover:not(:disabled) {
+  background: var(--hhh-muted-sage);
+}
+
+.hhh-button-outlined:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.hhh-button-outlined:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hhh-button-danger {
+  background: var(--hhh-error);
+  color: var(--hhh-white);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  min-height: 44px;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.hhh-button-danger:hover:not(:disabled) {
+  background: #8f1f19;
+}
+
+.hhh-button-danger:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.hhh-button-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hhh-button-small {
+  background: transparent;
+  color: var(--hhh-dark-teal);
+  border: 1px solid var(--hhh-border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.hhh-button-small:hover:not(:disabled) {
+  background: var(--hhh-muted-sage);
+  border-color: var(--hhh-primary-teal);
+}
+
+.hhh-button-small--danger {
+  color: var(--hhh-error);
+}
+
+.hhh-button-small--danger:hover:not(:disabled) {
+  background: var(--hhh-error-surface);
+  border-color: var(--hhh-error);
+}
+
+.hhh-button-small:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hhh-button-primary,
+  .hhh-button-outlined,
+  .hhh-button-danger,
+  .hhh-button-small {
+    transition: none;
+  }
+}
+
+/* --- Modal / dialog --------------------------------------------------- */
+
+.hhh-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 79, 73, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--hhh-space-lg);
+  z-index: 50;
+  animation: hhh-fade-rise 150ms ease-out both;
+}
+
+.hhh-modal {
+  background: var(--hhh-white);
+  border-radius: var(--hhh-radius-card);
+  border: 1px solid var(--hhh-border);
+  padding: var(--hhh-space-lg);
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(16, 79, 73, 0.2);
+}
+
+.hhh-modal--wide {
+  max-width: 640px;
+}
+
+.hhh-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--hhh-space-md);
+  margin-bottom: var(--hhh-space-md);
+}
+
+.hhh-modal__header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.hhh-modal__close {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--hhh-secondary-text);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.hhh-modal__close:hover {
+  background: var(--hhh-neutral-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hhh-modal-backdrop {
+    animation: none;
+  }
+}
+
+/* --- Bulk action bar -------------------------------------------------- */
+
+.hhh-bulk-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--hhh-space-md);
+  flex-wrap: wrap;
+  background: var(--hhh-muted-sage);
+  border: 1px solid var(--hhh-primary-teal);
+  border-radius: 10px;
+  padding: 10px var(--hhh-space-md);
+  margin-bottom: var(--hhh-space-md);
+  animation: hhh-fade-rise 200ms ease-out both;
+}
+
+.hhh-bulk-bar__count {
+  font-weight: 700;
+  color: var(--hhh-dark-teal);
+  white-space: nowrap;
+}
+
+.hhh-bulk-bar__actions {
+  display: flex;
+  gap: var(--hhh-space-sm);
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.hhh-bulk-bar__clear {
+  background: transparent;
+  border: none;
+  color: var(--hhh-dark-teal);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hhh-bulk-bar {
+    animation: none;
+  }
+}
+
+/* --- Selection checkboxes in data tables ------------------------------ */
+
+.hhh-data-table td.hhh-select-col,
+.hhh-data-table th.hhh-select-col {
+  width: 40px;
+  padding-right: 0;
+}
+
+.hhh-row-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--hhh-primary-teal);
+}
+
+.hhh-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* --- Form fields in Add/Edit dialogs ----------------------------------- */
+
+.hhh-form-grid {
+  display: grid;
+  gap: var(--hhh-space-md);
+}
+
+.hhh-field-error {
+  color: var(--hhh-error);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.hhh-status-select {
+  padding: 6px 10px;
+  border: 1px solid var(--hhh-border);
+  border-radius: 8px;
+  background: var(--hhh-white);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.hhh-status-select:focus-visible {
+  outline: 2px solid var(--hhh-primary-teal);
+  outline-offset: 1px;
+}
+
+.hhh-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--hhh-radius-pill);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.hhh-badge--neutral {
+  background: var(--hhh-neutral-surface);
+  color: var(--hhh-secondary-text);
+}
+
+.hhh-badge--attention {
+  background: var(--hhh-warning-surface);
+  color: var(--hhh-warning-text);
+}
+
+.hhh-badge--positive {
+  background: var(--hhh-success-surface);
+  color: var(--hhh-success);
+}
+
+.hhh-badge--critical {
+  background: var(--hhh-error-surface);
+  color: var(--hhh-error);
+}
+
+.hhh-field-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--hhh-space-xs);
+}
+
+.hhh-text-field {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--hhh-border);
+  border-radius: 8px;
+  background: var(--hhh-white);
+  min-height: 44px;
+}
+
+/* Only flag a field red after the person has actually interacted with
+ * it — :invalid alone fires on an empty required field immediately,
+ * which looks like a pre-existing error before anyone has typed. */
+.hhh-text-field:user-invalid {
+  border-color: var(--hhh-error);
+}
+
+.hhh-inline-alert {
+  background: var(--hhh-error-surface);
+  color: var(--hhh-error);
+  border-radius: 8px;
+  padding: var(--hhh-space-md);
+  font-weight: 500;
+}
+
+.hhh-empty-state {
+  text-align: center;
+  color: var(--hhh-secondary-text);
+  padding: var(--hhh-space-xl);
+}
+
+/* --- Admin shell: fixed sidebar, sticky header, scrollable content -
+ * The shell itself is viewport-height with overflow hidden; the sidebar
+ * and header never move, only `.hhh-admin-content` scrolls. This avoids
+ * `position: fixed` offset math entirely -- simpler and more robust than
+ * fixing the sidebar/header independently and margining the content to
+ * match. ------------------------------------------------------------ */
+
+.hhh-admin-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hhh-admin-sidebar {
+  width: 248px;
+  flex-shrink: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hhh-space-lg);
+  padding: var(--hhh-space-lg) var(--hhh-space-md);
+  background: var(--hhh-dark-teal);
+  color: var(--hhh-white);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.hhh-admin-main {
+  flex: 1;
+  min-width: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hhh-admin-header {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--hhh-white);
+  border-bottom: 1px solid var(--hhh-border);
+}
+
+.hhh-admin-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--hhh-space-xl) var(--hhh-space-lg);
+}
+
+.hhh-admin-brand {
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.hhh-admin-brand__sub {
+  font-size: 0.8rem;
+  color: var(--hhh-muted-sage);
+  margin-top: 2px;
+}
+
+.hhh-admin-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+/* --- Sidebar nav link: hover, active and focus states -------------- */
+
+.hhh-nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--hhh-space-sm);
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--hhh-white);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.hhh-nav-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hhh-nav-link:active {
+  transform: scale(0.98);
+}
+
+.hhh-nav-link:focus-visible {
+  outline: 3px solid var(--hhh-soft-peach);
+  outline-offset: 2px;
+}
+
+.hhh-nav-link[aria-current='page'] {
+  background: var(--hhh-white);
+  color: var(--hhh-dark-teal);
+  font-weight: 700;
+}
+
+.hhh-nav-link[aria-current='page']:hover {
+  background: var(--hhh-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hhh-nav-link,
+  .hhh-admin-sidebar {
+    transition: none;
+  }
+}
+
+.hhh-admin-backdrop {
+  display: none;
+}
+
+.hhh-demo-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--hhh-soft-peach);
+  color: #6b3a22;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* --- KPI grid: every card in a group shares width, height, padding and
+ * border -- the grid controls sizing, the card never sets its own. --- */
+
+.hhh-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--hhh-space-md);
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .hhh-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .hhh-kpi-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.hhh-metric-card {
+  background: var(--hhh-white);
+  border: 1px solid var(--hhh-border);
+  border-radius: var(--hhh-radius-card);
+  padding: var(--hhh-space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  height: 100%;
+  min-height: 112px;
+  min-width: 0;
+  box-sizing: border-box;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+a:has(> .hhh-metric-card):hover .hhh-metric-card,
+a:has(> .hhh-metric-card):focus-visible .hhh-metric-card {
+  border-color: var(--hhh-primary-teal);
+  box-shadow: 0 2px 8px rgba(23, 107, 99, 0.12);
+}
+
+.hhh-metric-card__label {
+  color: var(--hhh-secondary-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.hhh-metric-card__value {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--hhh-primary-text);
+  line-height: 1;
+}
+
+.hhh-metric-card__meta {
+  color: var(--hhh-secondary-text);
+  font-size: 0.8rem;
+}
+
+.hhh-analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--hhh-space-lg);
+  align-items: stretch;
+}
+
+.hhh-panel {
+  background: var(--hhh-white);
+  border: 1px solid var(--hhh-border);
+  border-radius: var(--hhh-radius-card);
+  padding: var(--hhh-space-lg);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.hhh-panel h2 {
+  font-size: 1.05rem;
+  margin: 0 0 var(--hhh-space-md) 0;
+  flex-shrink: 0;
+}
+
+.hhh-panel__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* --- Dashboard section entrance: a short, restrained fade-and-rise,
+ * not a bouncing or repeating animation. ----------------------------- */
+
+@keyframes hhh-fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hhh-fade-in {
+  animation: hhh-fade-rise 300ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hhh-fade-in {
+    animation: none;
+  }
+}
+
+.hhh-filter-input {
+  flex: 1 1 260px;
+  max-width: 360px;
+  padding: 8px 12px;
+  border: 1px solid var(--hhh-border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: var(--hhh-white);
+  color: var(--hhh-primary-text);
+}
+
+.hhh-filter-input:focus {
+  outline: 2px solid var(--hhh-primary-teal);
+  outline-offset: 1px;
+}
+
+.hhh-data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hhh-data-table th {
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--hhh-secondary-text);
+  font-weight: 600;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--hhh-border);
+}
+
+.hhh-data-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--hhh-border);
+  font-size: 0.92rem;
+  vertical-align: top;
+}
+
+.hhh-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Chart bar growth: scaleX/scaleY animate independently of the
+ * element's own inline-styled target size, so no JS measurement is
+ * needed -- the bar always grows from 0 to whatever width/height its
+ * data already set. --------------------------------------------------- */
+
+@keyframes hhh-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hhh-grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.hhh-bar-fill {
+  transform-origin: left center;
+  animation: hhh-grow-x 500ms ease-out both;
+}
+
+.hhh-activity-bar {
+  transform-origin: bottom center;
+  animation: hhh-grow-y 500ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hhh-bar-fill,
+  .hhh-activity-bar {
+    animation: none;
+  }
+}
+
+/* Below this width, the sidebar becomes a toggle-controlled drawer
+ * instead of a permanent column, per the brief's explicit requirement
+ * not to let it cover primary content on narrow screens. */
+@media (max-width: 900px) {
+  .hhh-admin-menu-toggle {
+    display: inline-flex !important;
+  }
+
+  .hhh-admin-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 30;
+    width: 248px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    box-shadow: 2px 0 16px rgba(16, 79, 73, 0.25);
+  }
+
+  .hhh-admin-sidebar--open {
+    transform: translateX(0);
+  }
+
+  .hhh-admin-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: rgba(16, 79, 73, 0.35);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .hhh-data-table thead {
+    display: none;
+  }
+
+  .hhh-data-table tr {
+    display: block;
+    border-bottom: 1px solid var(--hhh-border);
+    padding: var(--hhh-space-sm) 0;
+  }
+
+  .hhh-data-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--hhh-space-md);
+    border-bottom: none;
+    padding: 4px 2px;
+  }
+
+  .hhh-data-table td::before {
+    content: attr(data-label);
+    color: var(--hhh-secondary-text);
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+}
