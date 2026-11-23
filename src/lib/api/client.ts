@@ -7,6 +7,7 @@
  */
 
 import { cookies } from 'next/headers';
+import { API_BASE_URL } from '@/lib/api/config';
 import { createClient } from '@/lib/supabase/server';
 import {
   isExpiringSoon,
@@ -14,8 +15,6 @@ import {
   refreshPhoneSession,
   setPhoneSessionCookie,
 } from '@/lib/phoneAuth/session';
-
-const API_BASE_URL = process.env.HHH_API_URL ?? 'http://localhost:8000';
 
 class ApiError extends Error {
   constructor(

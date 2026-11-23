@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { loadStaffSession } from '@/lib/auth';
 import { fetchVisitReports } from '@/lib/reports';
@@ -67,7 +68,7 @@ export default async function ReportsPage() {
         <div className="hhh-card" style={{ padding: 'var(--hhh-space-md)' }}>
           <p style={{ margin: 0, color: 'var(--hhh-secondary-text)' }}>
             Incident reporting and tracking is available in the{' '}
-            <a href="/incidents" style={{ color: 'var(--hhh-primary-teal)', fontWeight: 600 }}>Incidents</a>{' '}
+            <Link href="/admin/incidents" style={{ color: 'var(--hhh-primary-teal)', fontWeight: 600 }}>Incidents</Link>{' '}
             section. Incident analytics and aggregation for this reports page are not yet built.
           </p>
         </div>

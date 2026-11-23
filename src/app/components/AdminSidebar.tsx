@@ -5,20 +5,20 @@ import { usePathname } from 'next/navigation';
 import { NavIcon } from './NavIcon';
 
 const NAV_ITEMS = [
-  { href: '/dashboard', label: 'Overview', icon: 'overview' as const },
-  { href: '/customers', label: 'Customers', icon: 'customers' as const },
-  { href: '/workers', label: 'Caregivers', icon: 'workers' as const },
-  { href: '/providers', label: 'Providers', icon: 'providers' as const },
-  { href: '/requests', label: 'Care Requests', icon: 'requests' as const },
-  { href: '/assignments', label: 'Assignments', icon: 'assignments' as const },
-  { href: '/visits', label: 'Visits & Scheduling', icon: 'visits' as const },
-  { href: '/incidents', label: 'Incidents', icon: 'incidents' as const },
-  { href: '/tickets', label: 'Support Tickets', icon: 'tickets' as const },
-  { href: '/academy', label: 'Caregiver Academy', icon: 'academy' as const },
-  { href: '/reports', label: 'Reports & Insights', icon: 'reports' as const },
-  { href: '/notifications', label: 'Notifications', icon: 'notifications' as const },
-  { href: '/staff', label: 'Staff & Access', icon: 'staff' as const },
-  { href: '/settings', label: 'Settings', icon: 'settings' as const },
+  { href: '/admin', label: 'Overview', icon: 'overview' as const },
+  { href: '/admin/customers', label: 'Customers', icon: 'customers' as const },
+  { href: '/admin/workers', label: 'Caregivers', icon: 'workers' as const },
+  { href: '/admin/providers', label: 'Providers', icon: 'providers' as const },
+  { href: '/admin/requests', label: 'Care Requests', icon: 'requests' as const },
+  { href: '/admin/assignments', label: 'Assignments', icon: 'assignments' as const },
+  { href: '/admin/visits', label: 'Visits & Scheduling', icon: 'visits' as const },
+  { href: '/admin/incidents', label: 'Incidents', icon: 'incidents' as const },
+  { href: '/admin/tickets', label: 'Support Tickets', icon: 'tickets' as const },
+  { href: '/admin/academy', label: 'Caregiver Academy', icon: 'academy' as const },
+  { href: '/admin/reports', label: 'Reports & Insights', icon: 'reports' as const },
+  { href: '/admin/notifications', label: 'Notifications', icon: 'notifications' as const },
+  { href: '/admin/staff', label: 'Staff & Access', icon: 'staff' as const },
+  { href: '/admin/settings', label: 'Settings', icon: 'settings' as const },
 ];
 
 /**

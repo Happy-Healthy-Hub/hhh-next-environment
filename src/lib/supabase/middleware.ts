@@ -32,8 +32,11 @@ export async function updateSession(request: NextRequest) {
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) {
     // No backend configured: do not silently let protected routes
-    // through — treat it the same as "not signed in".
-    return redirectToLogin(request);
+    // through. The login page itself remains reachable so it can show
+    // the real configuration/authentication error instead of looping.
+    return isPublicAdminPath(request.nextUrl.pathname)
+      ? NextResponse.next({ request })
+      : redirectToLogin(request);
   }
 
   const supabase = createServerClient(url, key, {
@@ -58,10 +61,7 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const { pathname } = request.nextUrl;
-  // '/' is the public landing page (src/app/page.tsx) -- it handles its
-  // own signed-in redirect and must not be bounced to /login by the
-  // middleware before a signed-out visitor ever sees it.
-  const isPublicPath = pathname === '/' || pathname === '/login' || pathname.startsWith('/auth');
+  const isPublicPath = isPublicAdminPath(pathname);
 
   if (!user && !isPublicPath) {
     return redirectToLogin(request);
@@ -85,7 +85,7 @@ async function checkAndRefreshPhoneSession(request: NextRequest): Promise<NextRe
   if (!session) return null;
 
   const { pathname } = request.nextUrl;
-  const isPublicPath = pathname === '/' || pathname === '/login' || pathname.startsWith('/auth');
+  const isPublicPath = isPublicAdminPath(pathname);
 
   if (!isExpiringSoon(session)) {
     return isPublicPath ? null : NextResponse.next({ request });
@@ -110,7 +110,11 @@ async function checkAndRefreshPhoneSession(request: NextRequest): Promise<NextRe
 
 function redirectToLogin(request: NextRequest) {
   const loginUrl = request.nextUrl.clone();
-  loginUrl.pathname = '/login';
+  loginUrl.pathname = '/admin/login';
   loginUrl.search = '';
   return NextResponse.redirect(loginUrl);
+}
+
+function isPublicAdminPath(pathname: string) {
+  return pathname === '/admin/login';
 }

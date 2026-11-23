@@ -1,29 +1,23 @@
-import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
-import { connection } from 'next/server';
 import Image from 'next/image';
-import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
-import { loadStaffSession } from '@/lib/auth';
-import { HHH_HELPLINE_DISPLAY_NUMBER, HHH_HELPLINE_TEL_URI } from '@/lib/hhhHelpline';
+import { connection } from 'next/server';
 import { LandingNav } from './components/landing/LandingNav';
 import { ScrollReveal } from './components/landing/ScrollReveal';
 import { FaqAccordion } from './components/landing/FaqAccordion';
 import './landing.css';
+import './registration.css';
 
-export const instant = false;
-
-export const metadata: Metadata = {
-  title: 'Happy Healthy Hub — Silverage Care Services',
-  description:
-    'Happy Healthy Hub supports older adults and their families with thoughtful home-based care, companionship and dependable assistance in Pune and Delhi.',
-  openGraph: {
-    title: 'Happy Healthy Hub — Silverage Care Services',
-    description:
-      'Thoughtful care, meaningful companionship and dependable support for older adults and their families.',
-    type: 'website',
-    siteName: 'Happy Healthy Hub',
-  },
+const ORGANIZATION_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Happy Healthy Hub',
+  alternateName: 'Silverage Care Services',
+  url: 'https://hhh.foundation',
+  logo: 'https://hhh.foundation/images/hhh-logo.webp',
+  telephone: '+91-7507674555',
+  areaServed: [
+    { '@type': 'City', name: 'Pune' },
+    { '@type': 'City', name: 'Delhi' },
+  ],
 };
 
 const SERVICES = [
@@ -139,61 +133,26 @@ const FAQS = [
 ];
 
 /**
- * Public landing page for signed-out visitors; signed-in staff are sent
- * straight to the workspace. This portal has no customer- or
- * worker-facing web experience of its own -- that remains the Happy
- * Healthy Hub mobile app, a deliberate, documented scope decision (see
- * docs/OPERATIONS_PORTAL.md in the withu repository). This page is a
- * premium marketing/brand experience only: no login or registration
- * form appears anywhere on it, and every CTA either scrolls to a real
- * on-page section or links to the one real destination that exists
- * (staff sign-in) -- never an invented portal URL.
- *
- * Content follows CLAUDE.md / DESIGN.md's "do not invent" rules: no
- * fabricated testimonials, statistics, certifications, prices,
- * availability claims or course details. The live service catalogue is
- * currently empty, so "Our Services" presents the organisation's real,
- * documented care categories as descriptive positioning copy, not a
- * live, bookable, priced catalogue (that selection flow already exists,
- * correctly, inside the mobile app against the real backend).
+ * Happy Healthy Hub public landing page -- a standalone extraction of the
+ * marketing/brand page that also lives inside the Operations Portal
+ * repository. No fabricated testimonials, statistics, certifications,
+ * prices or availability claims appear -- content follows the same
+ * "do not invent" rule as the source project.
  */
 export default async function LandingPage() {
   await connection();
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (user) {
-    const session = await loadStaffSession(supabase);
-    if (session?.isCareStaff) redirect('/dashboard');
-
-    const { data: providerMembership } = await supabase
-      .from('provider_memberships')
-      .select('id')
-      .eq('profile_id', user.id)
-      .eq('status', 'active')
-      .limit(1)
-      .maybeSingle();
-    if (providerMembership) redirect('/provider');
-
-    const { data: customer } = await supabase
-      .from('customers')
-      .select('id')
-      .eq('profile_id', user.id)
-      .limit(1)
-      .maybeSingle();
-    if (customer) redirect('/customer');
-
-    redirect('/customer');
-  }
-
   return (
     <div className="hhh-land" id="top">
+      <a className="hhh-skip-link" href="#main-content">Skip to main content</a>
       <LandingNav />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
+      />
 
-      {/* ---------------------------------------------------------- Hero */}
-      <header className="hhh-land-hero">
+      <main id="main-content">
+        {/* ---------------------------------------------------------- Hero */}
+        <header className="hhh-land-hero">
         <div className="hhh-land__container hhh-land-hero__grid">
           <div>
             <p className="hhh-land__eyebrow">Happy Healthy Hub · Silverage Care Services</p>
@@ -212,32 +171,40 @@ export default async function LandingPage() {
             </div>
           </div>
           <div className="hhh-land-hero__media">
-            <div className="hhh-land-hero__accent hhh-land-hero__accent--one" aria-hidden="true" />
-            <div className="hhh-land-hero__accent hhh-land-hero__accent--two" aria-hidden="true" />
             <div className="hhh-land-hero__frame">
-              {/* eslint-disable-next-line @next/next/no-img-element -- a
-                  static, hand-picked decorative illustration; next/image
-                  optimisation adds nothing for a vector file. */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- static export uses a hand-generated responsive WebP srcset. */}
               <img
-                src="/images/illustrations/conversation.svg"
-                alt="An illustration of a warm, friendly conversation between people sharing coffee at a table"
+                src="/images/hhh-hero.webp"
+                srcSet="/images/hhh-hero-480.webp 480w, /images/hhh-hero-800.webp 800w, /images/hhh-hero.webp 1199w"
+                alt="An older adult and family member speaking with a care professional, with the message: A real conversation, not a transaction."
+                width={1199}
+                height={1312}
+                sizes="(max-width: 900px) 100vw, 44vw"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="hhh-land-hero__illustration"
               />
-              <div className="hhh-land-hero__caption">A real conversation, not a transaction.</div>
             </div>
           </div>
         </div>
-      </header>
+        </header>
 
       {/* ------------------------------------------------- Trust / intro */}
       <section className="hhh-land-section" id="about" aria-labelledby="about-heading">
         <div className="hhh-land__container hhh-land-trust">
           <ScrollReveal>
             <div className="hhh-land-trust__media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- static export uses a hand-generated responsive WebP srcset. */}
               <img
-                src="/images/illustrations/casual-chat.svg"
-                alt="An illustration of two people enjoying a relaxed conversation outdoors under a tree"
+                src="/images/hhh-companionship.webp"
+                srcSet="/images/hhh-companionship-480.webp 480w, /images/hhh-companionship-800.webp 800w, /images/hhh-companionship.webp 1000w"
+                alt="A care professional greeting an older adult seated on a park bench"
+                width={1000}
+                height={1272}
+                sizes="(max-width: 860px) 100vw, 38vw"
+                loading="lazy"
+                decoding="async"
                 className="hhh-land-trust__illustration"
               />
             </div>
@@ -288,7 +255,7 @@ export default async function LandingPage() {
                     <h3 className="hhh-land-service-row__name">{service.name}</h3>
                     <p className="hhh-land-service-row__desc">{service.desc}</p>
                   </div>
-                  <span className="hhh-land-service-row__index">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="hhh-land-service-row__index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                 </div>
               ))}
             </div>
@@ -337,7 +304,7 @@ export default async function LandingPage() {
             <div className="hhh-land-steps">
               {STEPS.map((step, index) => (
                 <div className="hhh-land-step" key={step.title}>
-                  <div className="hhh-land-step__num">{index + 1}</div>
+                  <div className="hhh-land-step__num" aria-hidden="true">{index + 1}</div>
                   <h3 className="hhh-land-step__title">{step.title}</h3>
                   <p className="hhh-land-step__body">{step.body}</p>
                 </div>
@@ -371,17 +338,23 @@ export default async function LandingPage() {
                   <CheckIcon /> Built on the same dignity-first principles as our care services.
                 </li>
               </ul>
-              <a href="#faq" className="hhh-land-btn hhh-land-btn--primary">
-                Explore the Caregiver Academy
+              <a href="#contact" className="hhh-land-btn hhh-land-btn--primary">
+                Enquire about the Caregiver Academy
               </a>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={100}>
             <div className="hhh-land-academy__media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- static export uses a hand-generated responsive WebP srcset. */}
               <img
-                src="/images/illustrations/sharing-knowledge.svg"
-                alt="An illustration of someone sharing knowledge and teaching with warmth and encouragement"
+                src="/images/hhh-academy.webp"
+                srcSet="/images/hhh-academy-480.webp 480w, /images/hhh-academy-800.webp 800w, /images/hhh-academy.webp 1200w"
+                alt="Two Happy Healthy Hub team members reviewing a caregiver training checklist"
+                width={1200}
+                height={956}
+                sizes="(max-width: 860px) 100vw, 42vw"
+                loading="lazy"
+                decoding="async"
                 className="hhh-land-academy__illustration"
               />
             </div>
@@ -398,10 +371,10 @@ export default async function LandingPage() {
                 <p className="hhh-land__eyebrow" style={{ color: 'var(--hhh-soft-peach)' }}>
                   Our approach to care
                 </p>
-                <p className="hhh-land-approach__quote" id="approach-heading">
+                <h2 className="hhh-land-approach__quote" id="approach-heading">
                   &ldquo;Every person deserves dignity, and support should never come at the cost
                   of independence.&rdquo;
-                </p>
+                </h2>
                 <ul className="hhh-land-approach__list">
                   <li>Care should respect independence, not replace it.</li>
                   <li>Companionship matters as much as assistance.</li>
@@ -456,13 +429,14 @@ export default async function LandingPage() {
           </ScrollReveal>
         </div>
       </section>
+      </main>
 
       {/* ------------------------------------------------------------ Footer */}
       <footer className="hhh-land-footer" id="contact">
         <div className="hhh-land__container">
           <div className="hhh-land-footer__top">
             <div className="hhh-land-footer__brand">
-              <Image src="/hhh-logo.png" alt="Happy Healthy Hub logo" width={40} height={40} />
+              <Image src="/images/hhh-logo.webp" alt="" width={80} height={80} loading="lazy" />
               <div>
                 <div className="hhh-land-footer__brand-name">Happy Healthy Hub</div>
                 <div className="hhh-land-footer__brand-tag">Silverage Care Services</div>
@@ -489,22 +463,14 @@ export default async function LandingPage() {
                 <p className="hhh-land-footer__col-title">HHH - support and helpline</p>
                 <ul className="hhh-land-footer__col">
                   <li><span>Happy Healthy Hub — Official Helpline</span></li>
-                  <li><a href={HHH_HELPLINE_TEL_URI}>{HHH_HELPLINE_DISPLAY_NUMBER}</a></li>
-                </ul>
-              </div>
-              <div>
-                <p className="hhh-land-footer__col-title">Portals</p>
-                <ul className="hhh-land-footer__col">
-                  <li><Link href="/customer">Customer portal</Link></li>
-                  <li><Link href="/provider">Provider portal</Link></li>
-                  <li><Link href="/login">Staff sign in</Link></li>
+                  <li><a href="tel:+917507674555">+91 7507674555</a></li>
                 </ul>
               </div>
             </div>
           </div>
           <div className="hhh-land-footer__bottom">
             <span>© {new Date().getFullYear()} Happy Healthy Hub. All rights reserved.</span>
-            <span>hhh.foundation</span>
+            <a href="https://hhh.foundation">hhh.foundation</a>
           </div>
         </div>
       </footer>

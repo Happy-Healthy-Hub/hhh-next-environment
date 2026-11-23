@@ -5,7 +5,7 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 /**
  * Server-side Supabase client for Server Components, Route Handlers and
  * Server Actions. Reads/writes the auth session via cookies, which the
- * root `middleware.ts` keeps refreshed. Still only the publishable/anon
+ * root `src/proxy.ts` keeps refreshed. Still only the publishable/anon
  * key — authorisation is enforced by RLS and the trusted database
  * functions, not by this client holding elevated privilege.
  *
@@ -41,7 +41,7 @@ export async function createClient() {
         } catch {
           // Called from a Server Component where cookies can't be written
           // (e.g. a page render, as opposed to a Server Action or Route
-          // Handler). Safe to ignore here: middleware.ts refreshes the
+          // Handler). Safe to ignore here: src/proxy.ts refreshes the
           // session on every request regardless.
         }
       },

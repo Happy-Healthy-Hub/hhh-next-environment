@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const NAV_ITEMS = [
-  { href: '/customer', label: 'Home', icon: 'home' },
-  { href: '/customer/services', label: 'Services', icon: 'services' },
-  { href: '/customer/requests', label: 'My Requests', icon: 'requests' },
-  { href: '/customer/profile', label: 'My Profile', icon: 'profile' },
+  { href: '/admin/customer', label: 'Home', icon: 'home' },
+  { href: '/admin/customer/services', label: 'Services', icon: 'services' },
+  { href: '/admin/customer/requests', label: 'My Requests', icon: 'requests' },
+  { href: '/admin/customer/profile', label: 'My Profile', icon: 'profile' },
 ] as const;
 
 function CustomerNavIcon({ name }: { name: string }) {
@@ -41,7 +41,7 @@ export function CustomerSidebar({ open, onNavigate }: { open: boolean; onNavigat
       </div>
       <ul className="hhh-admin-nav-list">
         {NAV_ITEMS.map((item) => {
-          const active = pathname === item.href || (item.href !== '/customer' && pathname.startsWith(`${item.href}/`));
+          const active = pathname === item.href || (item.href !== '/admin/customer' && pathname.startsWith(`${item.href}/`));
           return (
             <li key={item.href}>
               <Link

@@ -95,7 +95,7 @@ export function PhoneLoginForm() {
       return;
     }
 
-    router.replace('/dashboard');
+    router.replace('/admin');
     router.refresh();
   }
 

@@ -12,6 +12,36 @@
   overflow-x: hidden;
 }
 
+.hhh-skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1200;
+  transform: translateY(-160%);
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--hhh-dark-teal);
+  color: var(--hhh-white);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hhh-skip-link:focus {
+  transform: translateY(0);
+}
+
+.hhh-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .hhh-land h1,
 .hhh-land h2,
 .hhh-land h3 {
@@ -42,26 +72,6 @@
  * heavy animation library — one `.hhh-land-reveal` class, toggled to
  * `.is-visible` once. --------------------------------------------- */
 
-.hhh-land-reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hhh-land-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hhh-land-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
 /* --- Navigation -------------------------------------------------- */
 
 .hhh-land-nav {
@@ -84,20 +94,21 @@
   justify-content: space-between;
   gap: 24px;
   border-radius: 999px;
-  background: rgba(250, 248, 243, 0.55);
-  border: 1px solid rgba(229, 232, 226, 0.7);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
+  background: rgba(250, 248, 243, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 8px 24px rgba(16, 79, 73, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: background-color 300ms ease, border-color 300ms ease,
     box-shadow 300ms ease, backdrop-filter 300ms ease;
 }
 
 .hhh-land-nav--scrolled .hhh-land-nav__bar {
-  background: rgba(250, 248, 243, 0.86);
+  background: rgba(250, 248, 243, 0.94);
   border-color: var(--hhh-border);
-  box-shadow: 0 8px 28px rgba(16, 79, 73, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 28px rgba(16, 79, 73, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .hhh-land-nav__brand {
@@ -176,6 +187,9 @@
   text-decoration: none;
   white-space: nowrap;
   transition: background-color 200ms ease, transform 150ms ease;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .hhh-land-nav__cta:hover {
@@ -228,14 +242,7 @@
     border-radius: 20px;
     padding: 10px;
     box-shadow: 0 16px 40px rgba(16, 79, 73, 0.14);
-    max-height: 0;
     overflow: hidden;
-    opacity: 0;
-    transition: max-height 300ms ease, opacity 250ms ease, padding 300ms ease;
-  }
-  .hhh-land-nav__mobile-panel.is-open {
-    max-height: 420px;
-    opacity: 1;
   }
   .hhh-land-nav__mobile-link {
     display: block;
@@ -259,6 +266,9 @@
     color: var(--hhh-white);
     text-decoration: none;
     font-weight: 700;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
   }
 }
 
@@ -357,21 +367,22 @@
 
 .hhh-land-hero__frame {
   position: relative;
-  border-radius: 28px;
+  border-radius: 26px;
   overflow: hidden;
-  aspect-ratio: 4 / 4.7;
-  box-shadow: 0 30px 70px rgba(16, 79, 73, 0.22);
-  background: linear-gradient(165deg, var(--hhh-muted-sage) 0%, var(--hhh-warm-ivory) 70%);
+  aspect-ratio: 1199 / 1312;
+  box-shadow: 0 24px 56px rgba(16, 79, 73, 0.16);
+  border: 1px solid rgba(16, 79, 73, 0.08);
+  background: var(--hhh-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(24px, 6%, 56px);
+  padding: 0;
 }
 
 .hhh-land-hero__illustration {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
@@ -418,7 +429,8 @@
     grid-template-columns: 1fr;
   }
   .hhh-land-hero__media {
-    order: -1;
+    width: min(100%, 560px);
+    margin: 0 auto;
   }
   .hhh-land-hero__sub {
     max-width: 100%;
@@ -428,7 +440,8 @@
 /* --- Generic section rhythm ----------------------------------------- */
 
 .hhh-land-section {
-  padding: clamp(64px, 9vw, 120px) 0;
+  padding: clamp(64px, 8vw, 104px) 0;
+  scroll-margin-top: 112px;
 }
 
 .hhh-land-section--tint {
@@ -473,18 +486,18 @@
   border-radius: 24px;
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  box-shadow: 0 24px 60px rgba(16, 79, 73, 0.16);
-  background: linear-gradient(165deg, var(--hhh-warm-ivory) 0%, var(--hhh-muted-sage) 100%);
+  box-shadow: 0 20px 48px rgba(16, 79, 73, 0.13);
+  background: var(--hhh-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(20px, 8%, 48px);
+  padding: 0;
 }
 
 .hhh-land-trust__illustration {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
@@ -675,7 +688,7 @@
 .hhh-land-step__body {
   margin: 0;
   font-size: 0.92rem;
-  color: var(--hhh-secondary-text);
+  color: #4d5752;
   line-height: 1.55;
 }
 
@@ -708,19 +721,19 @@
   border-radius: 24px;
   overflow: hidden;
   aspect-ratio: 5 / 4;
-  box-shadow: 0 24px 60px rgba(16, 79, 73, 0.16);
+  box-shadow: 0 20px 48px rgba(16, 79, 73, 0.13);
   order: -1;
-  background: linear-gradient(165deg, var(--hhh-muted-sage) 0%, var(--hhh-warm-ivory) 100%);
+  background: var(--hhh-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(20px, 8%, 48px);
+  padding: 0;
 }
 
 .hhh-land-academy__illustration {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
@@ -802,8 +815,10 @@
 .hhh-land-approach__quote {
   font-family: var(--land-serif);
   font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 500;
   line-height: 1.35;
   margin: 0 0 22px 0;
+  color: var(--hhh-white);
 }
 
 .hhh-land-approach__list {
@@ -853,6 +868,7 @@
 }
 
 .hhh-land-faq__question {
+  list-style: none;
   width: 100%;
   text-align: left;
   background: transparent;
@@ -866,6 +882,10 @@
   font-family: var(--land-serif);
   font-size: 1.12rem;
   color: var(--hhh-primary-text);
+}
+
+.hhh-land-faq__question::-webkit-details-marker {
+  display: none;
 }
 
 .hhh-land-faq__question:hover {
@@ -885,24 +905,14 @@
   transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), background-color 200ms ease;
 }
 
-.hhh-land-faq__item[data-open='true'] .hhh-land-faq__icon {
+.hhh-land-faq__item[open] .hhh-land-faq__icon {
   transform: rotate(135deg);
   background: var(--hhh-dark-teal);
   color: var(--hhh-white);
 }
 
 .hhh-land-faq__panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hhh-land-faq__item[data-open='true'] .hhh-land-faq__panel {
-  grid-template-rows: 1fr;
-}
-
-.hhh-land-faq__panel-inner {
-  overflow: hidden;
+  display: block;
 }
 
 .hhh-land-faq__answer {
@@ -914,8 +924,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hhh-land-faq__icon,
-  .hhh-land-faq__panel {
+  .hhh-land-faq__icon {
     transition: none;
   }
 }
@@ -994,6 +1003,7 @@
   background: var(--hhh-dark-teal);
   color: rgba(255, 255, 255, 0.78);
   padding: 56px 0 28px;
+  scroll-margin-top: 112px;
 }
 
 .hhh-land-footer__top {
@@ -1025,7 +1035,7 @@
 }
 
 .hhh-land-footer__brand-tag {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
@@ -1039,7 +1049,7 @@
 }
 
 .hhh-land-footer__col-title {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.5);
@@ -1072,10 +1082,52 @@
   flex-wrap: wrap;
   gap: 12px;
   padding-top: 24px;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.55);
 }
 
 .hhh-land-footer__bottom a {
   color: inherit;
+  text-underline-offset: 3px;
+}
+
+.hhh-land-approach :focus-visible,
+.hhh-land-cta :focus-visible,
+.hhh-land-footer :focus-visible {
+  outline-color: var(--hhh-soft-peach);
+}
+
+@media (max-width: 640px) {
+  .hhh-land-hero {
+    padding-top: 124px;
+  }
+
+  .hhh-land-hero__heading {
+    font-size: clamp(2.35rem, 12vw, 3.2rem);
+  }
+
+  .hhh-land-hero__sub,
+  .hhh-land-section__sub {
+    font-size: 1rem;
+  }
+
+  .hhh-land-hero__actions,
+  .hhh-land-cta__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hhh-land-btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hhh-land-trust__stats {
+    flex-direction: column;
+  }
+
+  .hhh-land-footer__links {
+    width: 100%;
+    flex-direction: column;
+  }
 }

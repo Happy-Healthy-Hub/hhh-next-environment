@@ -5,7 +5,6 @@ import { CARE_REQUEST_STATUSES, STATUS_LABELS, type CareRequestStatus } from '@/
 import { apiListCareRequests } from '@/lib/api/care-requests';
 import { apiListCustomers } from '@/lib/api/customers';
 import { apiListCaregivers } from '@/lib/api/caregivers';
-import { apiListVisits } from '@/lib/api/visits';
 import { AdminShell } from '../components/AdminShell';
 import { MetricCard } from '../components/MetricCard';
 import { ErrorState } from '../components/ErrorState';
