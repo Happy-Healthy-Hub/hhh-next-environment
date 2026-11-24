@@ -8,7 +8,7 @@ import { clearPhoneSessionOnResponse, readPhoneSessionCookie, revokePhoneSession
 export async function POST(request: Request) {
   if (isDemoMode()) {
     await clearDemoSession();
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL('/admin/login', request.url));
   }
 
   // A phone session (2026-11-18 migration) and a Supabase session are
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   // posture for sign-in.
   const cookieStore = await cookies();
   const phoneSession = readPhoneSessionCookie(cookieStore);
-  const response = NextResponse.redirect(new URL('/login', request.url));
+  const response = NextResponse.redirect(new URL('/admin/login', request.url));
   if (phoneSession) {
     await revokePhoneSession(phoneSession.refreshToken);
     clearPhoneSessionOnResponse(response);

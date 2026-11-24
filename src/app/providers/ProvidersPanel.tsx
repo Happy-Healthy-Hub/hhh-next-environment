@@ -117,7 +117,7 @@ export function ProvidersPanel({
 
       {!isAdministrator && (
         <p style={{ color: 'var(--hhh-secondary-text)', fontSize: '0.85rem', marginBottom: 'var(--hhh-space-md)' }}>
-          You can view provider organisations here. Only administrators can change a provider's verification status.
+          You can view provider organisations here. Only administrators can change a provider&apos;s verification status.
         </p>
       )}
 

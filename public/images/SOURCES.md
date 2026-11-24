@@ -1,6 +1,23 @@
 # Image sources — public landing page
 
-The landing page uses illustrations, not photographs, per an explicit
+The active landing-page artwork is generated from the three supplied source
+files in the project root. The original PNG files remain unchanged.
+
+| Optimized file | Source file | Used in |
+|---|---|---|
+| `hhh-hero.webp` | `Image 1.png` | Hero |
+| `hhh-companionship.webp` | `Image 2.png` | About / companionship |
+| `hhh-academy.webp` | `Image 3.png` | Happy Healthy Caregiver Academy |
+| `hhh-logo.webp` | `HHH - Logo.png` | Navigation and footer |
+| `hhh-og.png` | HHH logo and `Image 1.png` | Social sharing preview |
+
+The WebP files are responsive presentation assets generated at reduced
+dimensions and quality. The three older unDraw SVG files are retained below
+for provenance but are no longer rendered by the landing page.
+
+## Retained legacy illustration sources
+
+The previous landing page used illustrations, not photographs, per an explicit
 request to keep the visual tone consistently positive and never risk a
 "negative vibe" a real photo's lighting/expression/context could carry.
 

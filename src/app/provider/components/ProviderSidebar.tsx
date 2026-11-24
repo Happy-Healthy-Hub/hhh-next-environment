@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const NAV_ITEMS = [
-  { href: '/provider', label: 'Dashboard', icon: 'dashboard' },
-  { href: '/provider/work', label: 'Assignments', icon: 'work' },
-  { href: '/provider/organization', label: 'Organisation', icon: 'org' },
-  { href: '/provider/members', label: 'Team Members', icon: 'members' },
-  { href: '/provider/profile', label: 'My Profile', icon: 'profile' },
+  { href: '/admin/provider', label: 'Dashboard', icon: 'dashboard' },
+  { href: '/admin/provider/work', label: 'Assignments', icon: 'work' },
+  { href: '/admin/provider/organization', label: 'Organisation', icon: 'org' },
+  { href: '/admin/provider/members', label: 'Team Members', icon: 'members' },
+  { href: '/admin/provider/profile', label: 'My Profile', icon: 'profile' },
 ] as const;
 
 function ProviderNavIcon({ name }: { name: string }) {
@@ -44,7 +44,7 @@ export function ProviderSidebar({ open, onNavigate }: { open: boolean; onNavigat
       </div>
       <ul className="hhh-admin-nav-list">
         {NAV_ITEMS.map((item) => {
-          const active = pathname === item.href || (item.href !== '/provider' && pathname.startsWith(`${item.href}/`));
+          const active = pathname === item.href || (item.href !== '/admin/provider' && pathname.startsWith(`${item.href}/`));
           return (
             <li key={item.href}>
               <Link

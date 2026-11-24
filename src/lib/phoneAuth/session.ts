@@ -14,8 +14,7 @@
  */
 
 import type { NextResponse } from 'next/server';
-
-const API_BASE_URL = process.env.HHH_API_URL ?? 'http://localhost:8000';
+import { API_BASE_URL } from '@/lib/api/config';
 
 export const PHONE_SESSION_COOKIE = 'hhh_phone_session';
 

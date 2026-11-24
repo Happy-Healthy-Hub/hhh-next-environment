@@ -16,5 +16,5 @@ export async function demoSignInAction(profileId: string): Promise<void> {
     throw new Error('Local Demo Mode is not enabled.');
   }
   await setDemoSession(profileId);
-  redirect('/dashboard');
+  redirect('/admin');
 }

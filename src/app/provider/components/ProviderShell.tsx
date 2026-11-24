@@ -34,7 +34,12 @@ export function ProviderShell({
           userEmail={userEmail}
           onToggleSidebar={() => setSidebarOpen((v) => !v)}
         />
-        <main className="hhh-admin-content">{children}</main>
+        <main className="hhh-admin-content">
+          <p style={{ margin: '0 0 var(--hhh-space-md)', color: 'var(--hhh-secondary-text)' }}>
+            Organisation: {orgName}
+          </p>
+          {children}
+        </main>
       </div>
     </div>
   );

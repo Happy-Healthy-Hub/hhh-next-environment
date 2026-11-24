@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Fraunces } from 'next/font/google';
 import './globals.css';
 
@@ -27,9 +27,43 @@ const fraunces = Fraunces({
 export const instant = false;
 
 export const metadata: Metadata = {
-  title: 'Happy Healthy Hub — Operations',
+  metadataBase: new URL('https://hhh.foundation'),
+  title: 'Happy Healthy Hub — Silverage Care Services',
   description:
-    'Authenticated operational portal for Happy Healthy Hub care staff.',
+    'Happy Healthy Hub supports older adults and their families with thoughtful home-based care, companionship and dependable assistance in Pune and Delhi.',
+  applicationName: 'Happy Healthy Hub',
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'Happy Healthy Hub — Silverage Care Services',
+    description:
+      'Thoughtful care, meaningful companionship and dependable support for older adults and their families in Pune and Delhi.',
+    url: '/',
+    siteName: 'Happy Healthy Hub',
+    locale: 'en_IN',
+    type: 'website',
+    images: [
+      {
+        url: '/images/hhh-og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Happy Healthy Hub — thoughtful elder-care support and companionship',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Happy Healthy Hub — Silverage Care Services',
+    description:
+      'Thoughtful care, meaningful companionship and dependable support for older adults and their families.',
+    images: ['/images/hhh-og.png'],
+  },
+  icons: { icon: '/icon.png', apple: '/apple-icon.png' },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  colorScheme: 'light',
+  themeColor: '#FAF8F3',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
